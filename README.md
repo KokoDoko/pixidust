@@ -1,2 +1,10 @@
-# pixigruis
-Game demo using PixiJS, Typescript and OOP
+# Ruimtegruis
+
+Game demo using PixiJS, Typescript and OOP, featuring:
+
+- Classes
+- Animation
+- Keyboard controls
+- Spawn bullets
+- Collisions
+- Text
