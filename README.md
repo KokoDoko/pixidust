@@ -1,6 +1,6 @@
 # Ruimtegruis
 
-Game demo using PixiJS, Typescript and OOP, featuring:
+Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel.
 
 - Classes
 - Animation
@@ -8,3 +8,10 @@ Game demo using PixiJS, Typescript and OOP, featuring:
 - Spawn bullets
 - Collisions
 - Text
+
+## Usage
+
+```
+npm install
+npm run start
+```
