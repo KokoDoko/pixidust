@@ -3,10 +3,10 @@
 Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel.
 
 - Classes
-- Animation
+- Animation with Game Loop
 - Keyboard controls
 - Spawn bullets
-- Collisions
+- Checking Collisions
 - Text
 
 ## Usage
