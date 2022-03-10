@@ -2,7 +2,7 @@
 
 Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel. 
 
-Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src/ts)
+Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src/ts), [play the demo here](https://kokodoko.github.io/pixidust/)
 
 - Classes
 - Animation with Game Loop
