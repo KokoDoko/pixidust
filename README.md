@@ -12,9 +12,19 @@ Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src
 - Checking Collisions
 - Text
 
-## Usage
+## Installing
+
+First install parcel, pixi and typescript
 
 ```
 npm install
+```
+
+Run the project in a live server
+```
 npm run start
+```
+Build the project for publication
+```
+npm run build
 ```
