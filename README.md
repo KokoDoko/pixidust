@@ -14,7 +14,7 @@ Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src
 
 ## Installing
 
-First install parcel, pixi and typescript
+First install [NodeJS](https://nodejs.org/en/). Then you can use `npm` to install all required libraries in one go: parcel, pixi and typescript:
 
 ```
 npm install
@@ -75,3 +75,4 @@ To fix a temporary parcel bug with loading PNG images you have to add a `globals
 
 - [PixiJS install instructions](https://github.com/pixijs/pixijs)
 - [PixiJS getting started](https://pixijs.io/guides/basics/getting-started.html)
+- [NodeJS](https://nodejs.org/en/)
