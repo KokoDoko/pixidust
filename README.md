@@ -36,7 +36,7 @@ npm run build
 <br>
 <br>
 
-# Start a project from scratch
+# Start a Pixi Typescript project from scratch
 
 To start a PixiJS Typescript project from scratch, first create a game folder and run:
 
@@ -55,16 +55,23 @@ npm install @types/pixi.js
 <br>
 <Br>
 
-Now you can create a `src` folder and add a `index.html` and `app.js` file. In app.js you can use PIXI as follows:
+Now you can create a `src` folder and add a `index.html` and `app.ts` file. ⚠️ You can load the `.ts` file straight into the html!:
+```html
+<script defer type="module" src="./app.ts"></script>
+```
+
+
+In app.ts you can use PIXI as follows:
 
 ```javascript
 import * as PIXI from 'pixi.js'
+import ship from "./ship.png"
 
-let app = new PIXI.Application({ width: 640, height: 360 });
-document.body.appendChild(app.view);
+let app = new PIXI.Application({ width: 640, height: 360 })
+document.body.appendChild(app.view)
 
-let sprite = PIXI.Sprite.from('pikachu.png');
-app.stage.addChild(sprite);
+let sprite = PIXI.Sprite.from(ship)
+app.stage.addChild(sprite)
 ```
 <br>
 <Br>
@@ -79,9 +86,9 @@ To make developing easier you can add these `watch` and `build` commands to `pac
 ```
 Now you can use `npm run start` and `npm run build`.
 
-### 😭 Parcel Bug
+### 😭 Parcel PNG import Bug
 
-To fix a temporary parcel bug with loading PNG images you have to add a `globals.d.ts` file to the project root, containing: `declare module "*.png"`
+To fix an incorrect error message when importing PNG images you can add `// @ts-ignore` above the PNG import, or you can add a `globals.d.ts` file to the project root, containing: `declare module "*.png"`
 
 
 
