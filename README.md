@@ -50,6 +50,22 @@ npm install typescript -D
 npm install parcel -D
 npm install @types/pixi.js
 ```
+<br>
+<Br>
+
+Now you can create a `src` folder and add a `index.html` and `app.js` file. In app.js you can use PIXI as follows:
+
+```javascript
+import * as PIXI from 'pixi.js'
+
+let app = new PIXI.Application({ width: 640, height: 360 });
+document.body.appendChild(app.view);
+
+let sprite = PIXI.Sprite.from('pikachu.png');
+app.stage.addChild(sprite);
+```
+<br>
+<Br>
 
 To make developing easier you can add these `watch` and `build` commands to `package.json`
 
