@@ -28,3 +28,50 @@ Build the project for publication
 ```
 npm run build
 ```
+
+
+<br>
+<br>
+<br>
+
+# Start project from scratch
+
+To start a PixiJS Typescript project from scratch, first create a game folder and run:
+
+```bash
+npm init -y
+```
+
+Now you can install the libraries:
+
+```bash
+npm install pixi.js
+npm install typescript -D
+npm install parcel -D
+npm install @types/pixi.js
+```
+
+To make developing easier you can add these `watch` and `build` commands to `package.json`
+
+```json
+"scripts": {
+    "start": "parcel src/index.html --dist-dir docs",
+    "build": "parcel build src/index.html --dist-dir docs --public-url ./"
+}
+```
+Now you can use `npm run start` and `npm run build`.
+
+### 😭 Parcel Bug
+
+To fix a temporary parcel bug with loading PNG images you have to add a `globals.d.ts` file to the project root, containing: `declare module "*.png"`
+
+
+
+<br>
+<br>
+<br>
+
+# Links
+
+- [PixiJS install instructions](https://github.com/pixijs/pixijs)
+- [PixiJS getting started](https://pixijs.io/guides/basics/getting-started.html)
