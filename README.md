@@ -1,8 +1,6 @@
-# Ruimtegruis
+# Pixi Dust
 
-Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel. 
-
-Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src/ts), [play the demo here](https://kokodoko.github.io/pixidust/)
+Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel. Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src/ts), [play the demo here](https://kokodoko.github.io/pixidust/)
 
 - Classes
 - Animation with Game Loop
@@ -12,15 +10,19 @@ Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src
 - Checking Collisions
 - Text
 
-## Installing
+<br>
+<br>
+<br>
 
-First install [NodeJS](https://nodejs.org/en/). Then you can use `npm` to install all required libraries in one go: parcel, pixi and typescript:
+# Installing this example
+
+First install [NodeJS](https://nodejs.org/en/). Then you can use `npm` to install all required libraries in one go. (parcel, pixi and typescript)
 
 ```
 npm install
 ```
 
-Run the project in a live server
+Start development in a live server
 ```
 npm run start
 ```
@@ -34,7 +36,7 @@ npm run build
 <br>
 <br>
 
-# Start project from scratch
+# Start a project from scratch
 
 To start a PixiJS Typescript project from scratch, first create a game folder and run:
 
