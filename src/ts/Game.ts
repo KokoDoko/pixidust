@@ -6,7 +6,7 @@ import { Background } from "./Background"
 import { Bullet } from "./Bullet"
 import { UI } from "./UI"
 
-export class App {
+export class Game {
 
     public pixi: PIXI.Application
     private ship: Ship
@@ -91,4 +91,4 @@ export class App {
     }
 }
 
-new App()
+new Game()

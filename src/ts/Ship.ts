@@ -1,19 +1,19 @@
 import * as PIXI from "pixi.js"
 import ship from "../images/ship.png"
-import { App } from "./App"
+import { Game } from "./Game"
 
 export class Ship {
     private xspeed: number = 0
     private yspeed: number = 0
     private sprite: PIXI.Sprite
-    private app:App
+    private game:Game
 
-    constructor(app: App) {
-        this.app = app
+    constructor(game:Game) {
+        this.game = game
         this.sprite = PIXI.Sprite.from(ship)
-        this.app.pixi.stage.addChild(this.sprite)
+        this.game.pixi.stage.addChild(this.sprite)
         this.sprite.x = 100
-        this.sprite.y = this.app.pixi.screen.height/2 - 35
+        this.sprite.y = this.game.pixi.screen.height/2 - 35
 
         
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
@@ -26,7 +26,7 @@ export class Ship {
     }
 
     private shoot(){
-        this.app.addBullet(this.sprite.x + 80, this.sprite.y + 35)
+        this.game.addBullet(this.sprite.x + 80, this.sprite.y + 35)
     }
 
     private onKeyDown(e: KeyboardEvent): void {

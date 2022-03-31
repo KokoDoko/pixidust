@@ -1,19 +1,19 @@
 import * as PIXI from "pixi.js"
 import block from "../images/block3.png"
-import { App } from "./App"
+import { Game } from "./Game"
 
 export class Block {
     private sprite: PIXI.Sprite
     private speed: number = 0
-    private app:App
+    private game:Game
     private rotationSpeed: number = 0.01
 
-    constructor(app: App) {
+    constructor(game: Game) {
         this.sprite = PIXI.Sprite.from(block)
         this.sprite.pivot.x = 45 / 2
         this.sprite.pivot.y = 45 / 2
-        this.app = app
-        this.app.pixi.stage.addChild(this.sprite)
+        this.game = game
+        this.game.pixi.stage.addChild(this.sprite)
         this.resetPosition()
     }
 
@@ -35,6 +35,6 @@ export class Block {
     }
 
     public removeSprite(){
-        this.app.pixi.stage.removeChild(this.sprite)
+        this.game.pixi.stage.removeChild(this.sprite)
     }
 }

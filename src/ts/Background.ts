@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js"
 import background from "../images/background.png"
-import { App } from "./App"
+import { App } from "./Game"
 
 export class Background {
   private tiles: PIXI.TilingSprite

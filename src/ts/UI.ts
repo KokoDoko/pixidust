@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js"
 import block from "../images/block3.png"
-import { App } from "./App"
+import { App } from "./Game"
 
 export class UI {
     private scoreField: PIXI.Text
