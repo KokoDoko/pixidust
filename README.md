@@ -50,7 +50,6 @@ Now you can install the libraries:
 npm install pixi.js
 npm install typescript -D
 npm install parcel -D
-npm install @types/pixi.js
 ```
 <br>
 <Br>
