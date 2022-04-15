@@ -42,3 +42,13 @@ npm run build
 - [PixiJS install instructions](https://github.com/pixijs/pixijs)
 - [PixiJS getting started](https://pixijs.io/guides/basics/getting-started.html)
 - [Start a Typescript PixiJS project from scratch](./scratch.md)
+
+<br>
+<br>
+<br>
+
+## PixiJS demos
+
+- [Space Shooter](https://github.com/KokoDoko/pixidust)
+- [Physics](https://github.com/KokoDoko/piximatters)
+- [Flappy Bird](https://github.com/KokoDoko/pixibird.git)
