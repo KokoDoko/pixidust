@@ -1,32 +1,29 @@
 import * as PIXI from "pixi.js"
-import ship from "../images/ship.png"
 import { Game } from "./Game"
 
-export class Ship {
+export class Ship extends PIXI.Sprite {
+
     private xspeed: number = 0
     private yspeed: number = 0
-    private sprite: PIXI.Sprite
     private game:Game
 
-    constructor(game:Game) {
+    constructor(texture: PIXI.Texture, game: Game) {
+        super(texture)
         this.game = game
-        this.sprite = PIXI.Sprite.from(ship)
-        this.game.pixi.stage.addChild(this.sprite)
-        this.sprite.x = 100
-        this.sprite.y = this.game.pixi.screen.height/2 - 35
-
+        this.x = 100
+        this.y = 200
         
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
         window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
     }
     
     public update() {
-        this.sprite.x += this.xspeed
-        this.sprite.y += this.yspeed
+        this.x += this.xspeed
+        this.y += this.yspeed
     }
 
     private shoot(){
-        this.game.addBullet(this.sprite.x + 80, this.sprite.y + 35)
+        this.game.addBullet(this.x + 80, this.y + 35)
     }
 
     private onKeyDown(e: KeyboardEvent): void {

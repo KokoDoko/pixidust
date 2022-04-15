@@ -1,22 +1,12 @@
 import * as PIXI from "pixi.js"
-import background from "../images/background.png"
-import { Game } from "./Game"
 
-export class Background {
-  private tiles: PIXI.TilingSprite
+export class Background extends PIXI.TilingSprite {
 
-  constructor(game: Game) {
-    const texture = PIXI.Texture.from(background)
+    constructor(texture: PIXI.Texture, w: number, h: number) {
+        super(texture, w, h)
+    }
 
-    this.tiles = new PIXI.TilingSprite(
-      texture,
-      game.pixi.screen.width,
-      game.pixi.screen.height
-    )
-    game.pixi.stage.addChild(this.tiles)
-  }
-
-  public update() {
-    this.tiles.tilePosition.x -= 3
-  }
+    public update() {
+        this.tilePosition.x -= 3
+    }
 }

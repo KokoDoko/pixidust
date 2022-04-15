@@ -1,14 +1,13 @@
 import * as PIXI from "pixi.js"
-import block from "../images/block3.png"
-import { App } from "./Game"
+import { Game } from "./Game"
 
 export class UI {
     private scoreField: PIXI.Text
-    private app:App
+    private game:Game
     private score:number = 0
 
-    constructor(app: App) { 
-        this.app = app
+    constructor(game: Game) { 
+        this.game = game
 
         const style = new PIXI.TextStyle({
             fontFamily: 'Arial',
@@ -21,7 +20,7 @@ export class UI {
         this.scoreField.x = 20
         this.scoreField.y = 20
 
-        this.app.pixi.stage.addChild(this.scoreField)
+        this.game.pixi.stage.addChild(this.scoreField)
     }
 
     public updateScore(s:number) {
