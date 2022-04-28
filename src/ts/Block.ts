@@ -21,7 +21,7 @@ export class Block extends PIXI.Sprite {
         if (this.x < -100) this.resetPosition()
     }
 
-    private resetPosition() {
+    public resetPosition() {
         this.rotationSpeed = Math.random() / 100
         this.speed = 1 + Math.random()
         this.x = 940 + Math.random() * 120

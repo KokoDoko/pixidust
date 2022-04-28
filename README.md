@@ -8,6 +8,7 @@ Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel
 - Keyboard controls
 - Spawn bullets
 - Checking Collisions
+- Spritesheet explosion
 - Text
 
 <br>
@@ -16,7 +17,7 @@ Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel
 
 # Installing this example
 
-First install [NodeJS](https://nodejs.org/en/). Then you can use `npm` to install all required libraries in one go. (parcel, pixi and typescript)
+First install [NodeJS](https://nodejs.org/en/). Then you can use `npm install` to install parcel, pixi and typescript.
 
 ```
 npm install

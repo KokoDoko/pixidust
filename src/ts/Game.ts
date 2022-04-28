@@ -11,6 +11,7 @@ import { Block } from "./Block"
 import { Background } from "./Background"
 import { Bullet } from "./Bullet"
 import { UI } from "./UI"
+import { Explosion } from "./Explosion"
 
 export class Game {
 
@@ -20,6 +21,7 @@ export class Game {
     private bullets: Bullet[] = []
     private bg: Background
     private ui:UI
+    private explosionTextures:PIXI.Texture[] = []
 
     constructor() {
         const container = document.getElementById("container")!
@@ -31,6 +33,7 @@ export class Game {
             .add("background", bgImage)
             .add("bullet", bulletImage)
             .add("block", blockImage)
+            .add("spritesheet", "explosion.json")
         
 
         this.pixi.loader.onProgress.add((loader) => this.showProgress(loader))
@@ -45,7 +48,8 @@ export class Game {
 
 
     private doneLoading(loader: PIXI.Loader, resources:PIXI.utils.Dict<PIXI.LoaderResource>){
-        console.log(resources)
+        // create the explosion frames
+        this.createExplosionFrames()
 
         // add tiling bg
         this.bg = new Background(resources["background"].texture!, this.pixi.screen.width, this.pixi.screen.height)
@@ -90,29 +94,36 @@ export class Game {
         this.pixi.stage.addChild(b)
     }
 
-    public removeBullet(bullet: Bullet) {
-        this.pixi.stage.removeChild(bullet)
-        this.bullets = this.bullets.filter((b: Bullet) => b != bullet)
+    private createExplosionFrames() {
+        for (let i = 0; i < 26; i++) {
+            const texture = PIXI.Texture.from(`Explosion_Sequence_A ${i + 1}.png`)
+            this.explosionTextures.push(texture)
+        }
     }
 
-    private removeBlock(block: Block) {
-        this.pixi.stage.removeChild(block)
-        this.blocks = this.blocks.filter((b: Block) => b != block)
+    public createExplosion(x: number, y: number) {
+        const explosion = new Explosion(this.explosionTextures, x, y)
+        this.pixi.stage.addChild(explosion)
+    }   
+
+    public removeBullet(bullet: Bullet) {
+        this.bullets = this.bullets.filter((b: Bullet) => b != bullet)
+        bullet.destroy()
     }
 
     private checkCollisions() {
         for (let bullet of this.bullets) {
             for (let block of this.blocks) {
                 if(this.collision(bullet, block)){
+                    this.createExplosion(bullet.x, bullet.y)
                     this.removeBullet(bullet)
-                    this.removeBlock(block)
+                    block.resetPosition()
                     this.ui.updateScore(10)
                     break
                 }
             }
         }
     }
-
 
     private collision(bullet:Bullet, block:Block) {
         const bounds1 = bullet.getBounds()
