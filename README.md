@@ -1,8 +1,8 @@
 # Pixi Dust
 
-Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel. Check source code in [SRC/TS](https://github.com/KokoDoko/pixidust/tree/main/src/ts), [play the demo here](https://kokodoko.github.io/pixidust/)
+Game demo using PixiJS, Typescript and OOP and Parcel. The project is compiled using Parcel. [Play the demo here](https://kokodoko.github.io/pixidust/)!
 
-- Classes
+- Asset Loader with Loading Bar
 - Animation with Game Loop
 - Repeating scrolling background 
 - Keyboard controls
@@ -10,6 +10,7 @@ Game demo using PixiJS, Typescript and OOP. The project is compiled using Parcel
 - Checking Collisions
 - Spritesheet explosion
 - Text
+- Scale to window size
 
 <br>
 <br>

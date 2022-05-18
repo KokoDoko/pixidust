@@ -1,10 +1,3 @@
-import "../css/styles.css"
-
-import shipImage from "../images/ship.png"
-import bulletImage from "../images/bullet.png"
-import blockImage from "../images/block3.png"
-import bgImage from "../images/background.png"
-
 import * as PIXI from "pixi.js"
 import { Ship } from "./Ship"
 import { Block } from "./Block"
@@ -12,6 +5,7 @@ import { Background } from "./Background"
 import { Bullet } from "./Bullet"
 import { UI } from "./UI"
 import { Explosion } from "./Explosion"
+import { AssetLoader } from "./AssetLoader"
 
 export class Game {
 
@@ -22,48 +16,36 @@ export class Game {
     private bg: Background
     private ui:UI
     private explosionTextures:PIXI.Texture[] = []
+    private assetLoader : AssetLoader
 
     constructor() {
         const container = document.getElementById("container")!
         this.pixi = new PIXI.Application({ width: 900, height: 500 })
         container.appendChild(this.pixi.view)
-
-        this.pixi.loader
-            .add("ship", shipImage)
-            .add("background", bgImage)
-            .add("bullet", bulletImage)
-            .add("block", blockImage)
-            .add("spritesheet", "explosion.json")
         
-
-        this.pixi.loader.onProgress.add((loader) => this.showProgress(loader))
-        this.pixi.loader.onComplete.add((loader, resources) => this.doneLoading(loader, resources))
-        this.pixi.loader.onError.add((arg) => {console.error(arg)})
-        this.pixi.loader.load()
-    }
-
-    private showProgress(loader: PIXI.Loader) {
-        console.log(`Loading ${loader.progress}%`)
+        console.log("starting to load")
+        this.assetLoader = new AssetLoader(this)
     }
 
 
-    private doneLoading(loader: PIXI.Loader, resources:PIXI.utils.Dict<PIXI.LoaderResource>){
+
+    public doneLoading(){
         // create the explosion frames
         this.createExplosionFrames()
 
         // add tiling bg
-        this.bg = new Background(resources["background"].texture!, this.pixi.screen.width, this.pixi.screen.height)
+        this.bg = new Background(this.assetLoader.resources["background"].texture!, this.pixi.screen.width, this.pixi.screen.height)
         this.pixi.stage.addChild(this.bg)
 
         // add some blocks
         for (let i = 0; i < 10; i++) {
-            let b = new Block(resources["block"].texture!, this)
+            let b = new Block(this.assetLoader.resources["block"].texture!, this)
             this.blocks.push(b)
             this.pixi.stage.addChild(b)
         }
 
         // create a ship
-        this.ship = new Ship(resources["ship"].texture!, this)
+        this.ship = new Ship(this.assetLoader.resources["ship"].texture!, this)
         this.pixi.stage.addChild(this.ship)
 
         // create a UI
@@ -89,7 +71,7 @@ export class Game {
     }
 
     public addBullet(x: number, y: number) {
-        let b = new Bullet(this.pixi.loader.resources["bullet"].texture!, this, x, y)
+        let b = new Bullet(this.assetLoader.resources["bullet"].texture!, this, x, y)
         this.bullets.push(b)
         this.pixi.stage.addChild(b)
     }

@@ -4,11 +4,25 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(29, 29, 40);
+    overflow:hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a, a:visited {
+    color:white;
 }
 
 #container {
-    width: 900px;
-    margin: 20 auto;
+    width: 100vw;
+    height:100vh;
+    overflow:hidden;
+}
+
+canvas {
+    width:100vw;
 }
 
 #status {
