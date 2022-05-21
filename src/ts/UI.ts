@@ -10,8 +10,8 @@ export class UI {
         this.game = game
 
         const style = new PIXI.TextStyle({
-            fontFamily: 'Arial',
-            fontSize: 26,
+            fontFamily: 'ArcadeFont',
+            fontSize: 40,
             fontWeight: 'bold',
             fill: ['#ffffff']
         })
@@ -20,7 +20,7 @@ export class UI {
         this.scoreField.x = 20
         this.scoreField.y = 20
 
-        this.game.pixi.stage.addChild(this.scoreField)
+        this.game.container.addChild(this.scoreField)
     }
 
     public updateScore(s:number) {

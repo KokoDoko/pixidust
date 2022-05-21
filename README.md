@@ -9,8 +9,9 @@ Game demo using PixiJS, Typescript and OOP and Parcel. The project is compiled u
 - Spawn bullets
 - Checking Collisions
 - Spritesheet explosion
-- Text
+- UI Text with custom font
 - Scale to window size
+- Filters
 
 <br>
 <br>

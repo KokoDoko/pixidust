@@ -12,6 +12,12 @@ export class Block extends PIXI.Sprite {
         this.pivot.x = 45 / 2
         this.pivot.y = 45 / 2
         this.game = game
+
+        // color variation
+        const colorFilter = new PIXI.filters.ColorMatrixFilter()
+        colorFilter.brightness(0.4 + (Math.random() * 0.6), false)
+        this.filters = [colorFilter]
+
         this.resetPosition()
     }
 

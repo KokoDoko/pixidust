@@ -1,10 +1,13 @@
 import * as PIXI from "pixi.js"
 import { Game } from "./Game"
 
+
 import shipImage from "../images/ship.png"
 import bulletImage from "../images/bullet.png"
 import blockImage from "../images/block3.png"
 import bgImage from "../images/background.png"
+import monitorImage from "../images/wave.png"
+import scanImage from "../images/scanlines.png"
 
 export class AssetLoader extends PIXI.Loader {
 
@@ -22,6 +25,8 @@ export class AssetLoader extends PIXI.Loader {
             .add("background", bgImage)
             .add("bullet", bulletImage)
             .add("block", blockImage)
+            .add("scanTexture", scanImage)
+            .add("waveTexture", monitorImage)
             .add("spritesheet", "explosion.json")
 
 

@@ -10,6 +10,7 @@ import { AssetLoader } from "./AssetLoader"
 export class Game {
 
     public pixi: PIXI.Application
+    public container : PIXI.Container
     private ship: Ship
     private blocks: Block[] = []
     private bullets: Bullet[] = []
@@ -17,6 +18,7 @@ export class Game {
     private ui:UI
     private explosionTextures:PIXI.Texture[] = []
     private assetLoader : AssetLoader
+    private displacementSprite:PIXI.Sprite
 
     constructor() {
         const container = document.getElementById("container")!
@@ -30,32 +32,64 @@ export class Game {
 
 
     public doneLoading(){
-        // create the explosion frames
+        // create the explosion animation frames
         this.createExplosionFrames()
+        // build the stage
+        this.createScene()
+        // crt effect filter on top of scene
+        this.createDisplacementFilter()
+    }
+
+    private createScene() {
+        // container to put a filter on
+        this.container = new PIXI.Container
+        this.pixi.stage.addChild(this.container)
 
         // add tiling bg
         this.bg = new Background(this.assetLoader.resources["background"].texture!, this.pixi.screen.width, this.pixi.screen.height)
-        this.pixi.stage.addChild(this.bg)
+        this.container.addChild(this.bg)
 
         // add some blocks
         for (let i = 0; i < 10; i++) {
             let b = new Block(this.assetLoader.resources["block"].texture!, this)
             this.blocks.push(b)
-            this.pixi.stage.addChild(b)
+            this.container.addChild(b)
         }
 
         // create a ship
         this.ship = new Ship(this.assetLoader.resources["ship"].texture!, this)
-        this.pixi.stage.addChild(this.ship)
+        this.container.addChild(this.ship)
 
         // create a UI
         this.ui = new UI(this)
+
+        // scanlines effect outside of the container
+        let scans = new PIXI.TilingSprite(this.assetLoader.resources["scanTexture"].texture!, 900, 500)
+        this.pixi.stage.addChild(scans)
+        scans.blendMode = PIXI.BLEND_MODES.MULTIPLY
+        scans.alpha = 0.3
+        scans.tileScale.set(0.5)
 
         // start update loop
         this.pixi.ticker.add((delta) => this.update(delta))
     }
 
+    // filter to create a fake crt monitor effect
+    private createDisplacementFilter() {
+        this.displacementSprite = PIXI.Sprite.from(this.assetLoader.resources["waveTexture"].texture!)
+        this.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT
+        const displacementFilter = new PIXI.filters.DisplacementFilter(this.displacementSprite)
+        this.container.addChild(this.displacementSprite)
+        this.container.filters = [displacementFilter]
+        displacementFilter.scale.y = 10
+    }
+
     private update(delta:number) {
+        // move filter
+        this.displacementSprite.y -= 2
+        if (this.displacementSprite.y < -this.displacementSprite.height) { this.displacementSprite.y = 0 }
+
+        // update game elements
         this.bg.update()
         this.ship.update()
 
@@ -67,13 +101,14 @@ export class Game {
             bullet.update()
         }
 
+        // check collisions
         this.checkCollisions()
     }
 
     public addBullet(x: number, y: number) {
         let b = new Bullet(this.assetLoader.resources["bullet"].texture!, this, x, y)
         this.bullets.push(b)
-        this.pixi.stage.addChild(b)
+        this.container.addChild(b)
     }
 
     private createExplosionFrames() {
@@ -85,7 +120,7 @@ export class Game {
 
     public createExplosion(x: number, y: number) {
         const explosion = new Explosion(this.explosionTextures, x, y)
-        this.pixi.stage.addChild(explosion)
+        this.container.addChild(explosion)
     }   
 
     public removeBullet(bullet: Bullet) {
